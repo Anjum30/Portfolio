@@ -1,4 +1,4 @@
-# Numan Anjum - Portfolio (React + Vite)
+<!-- # Numan Anjum - Portfolio (React + Vite)
 
     npm install
     npm run dev      # development server
@@ -9,4 +9,4 @@ Edit your details in:
 - src/components/Contact.jsx   (email)
 - src/components/Projects.jsx  (project text, Live demo / Source code links)
 - src/components/Skills.jsx    (skills list)
-- src/index.css                (colors, fonts, animations)
+- src/index.css                (colors, fonts, animations) -->
