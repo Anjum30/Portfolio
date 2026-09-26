@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Reveal from "./Reveal.jsx";
 import SectionHead from "./SectionHead.jsx";
+import sneakersImg from "./../assets/sneakers.jpg";
+import backpackImg from "./../assets/bag.jpg";
+import watchImg from "./../assets/watch.jpg";
 
 const PRODUCTS = [
-  { name: "Sneakers", price: 59, color: "#f4b6a0" },
-  { name: "Backpack", price: 45, color: "#a9d6c2" },
-  { name: "Watch", price: 120, color: "#b9c4f5" },
+  { name: "Sneakers", price: 59, img: sneakersImg },
+  { name: "Backpack", price: 45, img: backpackImg },
+  { name: "Watch", price: 120, img: watchImg },
 ];
 
 // Small working cart shown as the ShopNest preview
@@ -15,34 +18,56 @@ function ShopMock() {
 
   return (
     <div className="mock" aria-label="ShopNest preview">
-      <div className="dots"><i /><i /><i /></div>
+      <div className="dots">
+        <i />
+        <i />
+        <i />
+      </div>
       <div className="shop-top">
         <span>ShopNest</span>
         <span className="cart">
-          Cart <span key={cart.length} className="bump">{cart.length}</span> · ${total}
+          Cart{" "}
+          <span key={cart.length} className="bump">
+            {cart.length}
+          </span>{" "}
+          · ${total}
         </span>
       </div>
       <div className="grid">
         {PRODUCTS.map((p) => (
           <div className="item" key={p.name}>
-            <div className="pic" style={{ background: p.color }} />
+            <img className="pic" src={p.img} alt={p.name} />
             <b>{p.name}</b>${p.price}
-            <button onClick={() => setCart([...cart, p.price])}>Add to cart</button>
+            <button onClick={() => setCart([...cart, p.price])}>
+              Add to cart
+            </button>
           </div>
         ))}
       </div>
-      {cart.length > 0 && <button className="clear" onClick={() => setCart([])}>Clear cart</button>}
+      {cart.length > 0 && (
+        <button className="clear" onClick={() => setCart([])}>
+          Clear cart
+        </button>
+      )}
     </div>
   );
 }
 
 function CoffeeMock() {
-  const menu = [["Espresso", "$3"], ["Flat white", "$4"], ["Cold brew", "$5"]];
+  const menu = [
+    ["Espresso", "$3"],
+    ["Flat white", "$4"],
+    ["Cold brew", "$5"],
+  ];
   return (
     <div className="mock coffee" aria-label="Bean and Bloom preview">
       <div className="cupbox">
         {[10, 28, 46].map((left, i) => (
-          <span key={left} className="steam" style={{ left, animationDelay: i * 0.7 + "s" }} />
+          <span
+            key={left}
+            className="steam"
+            style={{ left, animationDelay: i * 0.7 + "s" }}
+          />
         ))}
         <div className="cup" role="img" aria-label="Coffee cup" />
       </div>
@@ -50,7 +75,10 @@ function CoffeeMock() {
         <h4>Bean &amp; Bloom</h4>
         <ul>
           {menu.map(([item, price]) => (
-            <li key={item}><span>{item}</span><span>{price}</span></li>
+            <li key={item}>
+              <span>{item}</span>
+              <span>{price}</span>
+            </li>
           ))}
         </ul>
       </div>
@@ -58,18 +86,18 @@ function CoffeeMock() {
   );
 }
 
-function Project({ flip, mock, title, text, tags, demo = "#", code = "#" }) {
+function Project({ flip, mock, title, text, tags}) {
   return (
     <Reveal cls={"project" + (flip ? " flip" : "")}>
       {mock}
       <div>
         <h3>{title}</h3>
         <p>{text}</p>
-        <ul className="tags">{tags.map((t) => <li key={t}>{t}</li>)}</ul>
-        <div className="links">
-          <a href={demo}>Live demo</a>
-          <a href={code}>Source code</a>
-        </div>
+        <ul className="tags">
+          {tags.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
       </div>
     </Reveal>
   );
@@ -79,7 +107,10 @@ export default function Projects() {
   return (
     <section id="projects">
       <div className="wrap">
-        <SectionHead title="Projects" text="A full React store and a simple coffee shop site. Try the buttons in the store preview." />
+        <SectionHead
+          title="Projects"
+          text="A full React store and a simple coffee shop site. Try the buttons in the store preview."
+        />
         <Project
           mock={<ShopMock />}
           title="ShopNest, an e-commerce store"
