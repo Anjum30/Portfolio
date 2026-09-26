@@ -7,7 +7,7 @@ export default function Contact() {
         <Reveal cls="contact">
           <h2>Let's work together</h2>
           <p>I'm open to frontend roles and freelance projects. Send me a message and I'll reply within two days.</p>
-          <a className="btn" href="mailto:you@example.com">Email me</a>
+          <a className="btn" href="mailto:nomananjum433@gmail.com">Email me</a>
         </Reveal>
       </div>
     </section>
